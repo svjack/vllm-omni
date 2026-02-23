@@ -5,7 +5,7 @@ This document provides a complete set of instructions for installing and using v
 ---
 
 ## **Prerequisites**
-- A system with a 24GB GPU card.
+- A system with a 24GB GPU card. (3090/4090)
 - Ensure you have necessary permissions (e.g., `sudo` for system-level installations).
 
 ---
