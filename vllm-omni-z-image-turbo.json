@@ -1,0 +1,295 @@
+{
+  "id": "91f75acc-8040-40f6-865a-2e8a7cfd6672",
+  "revision": 0,
+  "last_node_id": 11,
+  "last_link_id": 23,
+  "nodes": [
+    {
+      "id": 10,
+      "type": "MarkdownNote",
+      "pos": [
+        227.99306819575278,
+        -231.24143306069843
+      ],
+      "size": [
+        240.3326478922474,
+        136.3505820791881
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note: Task and Input",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "vLLM-Omni nodes are categorized based on the output modality. The \"Generate Image\" node supports both text-to-image generation or image-to-image generation (a.k.a. image editing). The node will route to the correct endpoint depending on whether an input image is present or not."
+      ],
+      "color": "#432",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        496.31859627609606,
+        -229.71277089860084
+      ],
+      "size": [
+        270,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.14.1",
+        "Node name for S&R": "LoadImage",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "image": true,
+            "upload": true
+          },
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VLLMOmniDiffusionSampling",
+      "pos": [
+        478.59266934006774,
+        183.67711984955648
+      ],
+      "size": [
+        284.205078125,
+        202
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "diffusion sampling params",
+          "type": "SAMPLING_PARAMS",
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VLLMOmniDiffusionSampling",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "n": true,
+            "num_inference_steps": true,
+            "guidance_scale": true,
+            "true_cfg_scale": true,
+            "vae_use_slicing": true,
+            "seed": true
+          },
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        1,
+        20,
+        4,
+        1,
+        false,
+        42,
+        "fixed"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "VLLMOmniGenerateImage",
+      "pos": [
+        816.0962515873642,
+        -137.51112584854445
+      ],
+      "size": [
+        400,
+        278
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 21
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "sampling_params",
+          "shape": 7,
+          "type": "SAMPLING_PARAMS",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VLLMOmniGenerateImage",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "url": true,
+            "model": true,
+            "prompt": true,
+            "negative_prompt": true,
+            "width": true,
+            "height": true
+          },
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "http://10.50.3.7:8091/v1",
+        "Z-Image-Turbo",
+        "a lovely cat",
+        "",
+        512,
+        512
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewImage",
+      "pos": [
+        1296.2320290465025,
+        -119.8587279677397
+      ],
+      "size": [
+        305.6628685610174,
+        307.0336884172169
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 22
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.14.1",
+        "Node name for S&R": "PreviewImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      21,
+      4,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      11,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      8,
+      0,
+      11,
+      2,
+      "SAMPLING_PARAMS"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Input",
+      "bounding": [
+        213.1706010087147,
+        -313.20095750667554,
+        560.8246471437027,
+        407.4246532472182
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 1.0426432563169903,
+      "offset": [
+        -270.97822303816355,
+        246.67423713190908
+      ]
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "frontendVersion": "1.39.14",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
