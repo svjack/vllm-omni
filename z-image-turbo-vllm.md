@@ -245,6 +245,7 @@ curl -X POST \
 ## **Step 11: Integration with ComfyUI (Optional)**
 ```bash
 # copy the ComfyUI custom node from the existing vllm-omni clone
+#git clone https://github.com/vllm-project/vllm-omni.git
 cp -r vllm-omni/apps/ComfyUI-vLLM-Omni ComfyUI/custom_nodes
 ```
 
