@@ -121,7 +121,7 @@ uv run vllm serve Z-Image-Turbo --omni --host 0.0.0.0 --port 8091 --gpu_memory_u
 
 ---
 
-## **Step 9: Install jq for JSON Processing**
+## **Step 8: Install jq for JSON Processing**
 ```bash
 # Install jq (command-line JSON processor) if not present
 sudo apt-get install jq
