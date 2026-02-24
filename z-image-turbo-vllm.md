@@ -217,6 +217,7 @@ vllm serve Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice \
 
 ### **Option B: Using Base TTS Model (commented in original)**
 ```bash
+# 这种使用音频克隆的方法不准
 export FLASHINFER_DISABLE_VERSION_CHECK=1
 export HF_ENDPOINT=https://hf-mirror.com
 
@@ -243,8 +244,7 @@ curl -X POST \
 
 ## **Step 11: Integration with ComfyUI (Optional)**
 ```bash
-# Do NOT clone again (as per instruction "不准" meaning "do not")
-# Instead, copy the ComfyUI custom node from the existing vllm-omni clone
+# copy the ComfyUI custom node from the existing vllm-omni clone
 cp -r vllm-omni/apps/ComfyUI-vLLM-Omni ComfyUI/custom_nodes
 ```
 
