@@ -121,7 +121,15 @@ uv run vllm serve Z-Image-Turbo --omni --host 0.0.0.0 --port 8091 --gpu_memory_u
 
 ---
 
-## **Step 8: Test Image Generation with cURL**
+## **Step 9: Install jq for JSON Processing**
+```bash
+# Install jq (command-line JSON processor) if not present
+sudo apt-get install jq
+```
+
+---
+
+## **Step 9: Test Image Generation with cURL**
 After starting the server, test from another machine (replace `<server_ip>` with the actual internal IP):
 
 ### **Example 1: Generate an image of a dragon**
@@ -188,14 +196,6 @@ curl -s http://<server_ip>:8091/v1/chat/completions \
       "seed": 42
     }
   }' | jq -r '.choices[0].message.content[0].image_url.url' | cut -d',' -f2 | base64 -d > man.png
-```
-
----
-
-## **Step 9: Install jq for JSON Processing**
-```bash
-# Install jq (command-line JSON processor) if not present
-sudo apt-get install jq
 ```
 
 ---
